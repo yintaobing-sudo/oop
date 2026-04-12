@@ -37,7 +37,7 @@ public class TestUser {
     static int ticketCount = 0;
     static int bookingNo;
 
-    // in-memory lists — loaded from / saved to JSON files
+    // in-memory lists â€” loaded from / saved to JSON files
     static List<Concert> concerts = new java.util.ArrayList<>();
     static List<Workshop> workshops = new java.util.ArrayList<>();
     static List<Conference> conferences = new java.util.ArrayList<>();
@@ -65,12 +65,10 @@ public class TestUser {
         // no set as array to pass the value and change the value (only reference
         // variable will be affect)
         int[] no = { 0 };
-        
-
         // no is from 0 to 99
         // load data
 
-        readUserData(no, alluser);
+        readUserData(no, alluser); // load all user into the alluser array
         loadSpeakersFromUsers(alluser, no[0]); // populate speakerPool from Speaker accounts in user.json
         loadAllEvents(); // load all events and ticket types from files on startup
         tickets.clear();
@@ -108,11 +106,10 @@ public class TestUser {
                     accessmenu(user, alluser, no);
                     break;
                 case 0:
-                    System.out.println("            ╭━━━━━━━━╮");
-                    System.out.println("            ┃ ◕‿◕    ┃\t\t\"Good Bye!\" ");
-                    System.out.println("            ┃    ┃   ┃");
-                    System.out.println("            ┃   U    ┃");
-                    System.out.println("            ╰━━━━━━━━╯");
+                    System.out.println("            /\\_/\\  ");
+                    System.out.println("           ( ^.^ ) ");
+                    System.out.println("            > ^ <   See You Again!");
+                    System.out.println("                      GOOD BYE ");
                     active = false;
                     break;
                 default:
@@ -129,12 +126,15 @@ public class TestUser {
         boolean success = true;
         do {
             try {
-                System.out.println("\t\t\t(\\___/)");
-                System.out.println("\t\t\t(◕‿◕)               WELCOME TO OUR");
-                System.out.println("\t\t\t/   ♥  \\            EVENT MANAGEMENT");
-                System.out.println("\t\t\t|                        SYSTEM");
-                System.out.println("\t\t\t-------\n");
-                System.out.println("\t\t\t\"Where every event becomes magical! \"");
+                System.out.println("\t\t\t==============================================");
+                System.out.println("\t\t\t          EVENT MANAGEMENT SYSTEM");
+                System.out.println("\t\t\t==============================================");
+                System.out.println("\t\t\t      EEEEE   V   V   EEEEE   N   N   TTTTT");
+                System.out.println("\t\t\t      E       V   V   E       NN  N     T");
+                System.out.println("\t\t\t      EEEE    V   V   EEEE    N N N     T");
+                System.out.println("\t\t\t      E       V   V   E       NN  N     T");
+                System.out.println("\t\t\t      EEEEE     V     EEEEE   N   N     T");
+                System.out.println("\t\t\t==============================================");
 
                 System.out.print("\n \t\t\t\t1. Login");
                 System.out.print("\n \t\t\t\t2. Sign Up");
@@ -677,7 +677,6 @@ public static String loadSpeakerBio(String username) {
     public static void clearScreen() {
         try {
             // Try ANSI escape codes first
-            System.out.print("\033[H\033[2J");
             System.out.flush();
         } catch (Exception e) {
             // Fallback to blank lines
@@ -700,17 +699,17 @@ public static String loadSpeakerBio(String username) {
                 System.out.println("\n--------------------------------------------------------------");
                 System.out.println("|                      STAFF Menu                            |");
                 System.out.println("-------------------------------------------------------------|");
-                System.out.println("|  🎟️  CHECK-IN MENU:                                         |");
+                System.out.println("|  ðŸŽŸï¸  CHECK-IN MENU:                                         |");
                 System.out.println("|     1. Check-in Attendee by Ticket ID                      |");
                 System.out.println("|     2. View Check-in List                                  |");
                 System.out.println("|     3. View Pending Attendees List                         |");
                 System.out.println("-------------------------------------------------------------|");
-                System.out.println("|  📊 REPORT MENU:                                           |");
+                System.out.println("|  ðŸ“Š REPORT MENU:                                           |");
                 System.out.println("|     4. View Event Report                                   |");
                 System.out.println("|     5. View Sales Report                                   |");
                 System.out.println("|     6. View All Check-ins Report                           |");
                 System.out.println("-------------------------------------------------------------|");
-                System.out.println("|  📁 EXPORT MENU:                                           |");
+                System.out.println("|  ðŸ“ EXPORT MENU:                                           |");
                 System.out.println("|     7. Export Check-in Report                              |");
                 System.out.println("|     8. Export Sales Report                                 |");
                 System.out.println("|     9. Export Event Report                                 |");
@@ -954,9 +953,9 @@ public static String loadSpeakerBio(String username) {
         } else {
             System.out.println("\n\t\t\t----------------------------------------------------------------------");
             System.out.println("\t\t\t|                            CHECKED-IN LIST                         |");
-            System.out.println("\t\t\t├--------------------------------------------------------------------|");
+            System.out.println("\t\t\tâ”œ--------------------------------------------------------------------|");
             System.out.println("\t\t\t| NO |      Name          |        Email        |  Ticket  | Status  |");
-            System.out.println("\t\t\t├----|--------------------|---------------------|----------|---------|");
+            System.out.println("\t\t\tâ”œ----|--------------------|---------------------|----------|---------|");
             Attendee usertemp = new Attendee();
             for (Ticket ticket : tickets) {
                 if (ticket != null) {
@@ -1020,7 +1019,7 @@ public static String loadSpeakerBio(String username) {
         } else {
             System.out.println("\n\t\t\t----------------------------------------------------------------------");
             System.out.println("\t\t\t|                     PENDING ATTENDEES LIST                         |");
-            System.out.println("\t\t\t├--------------------------------------------------------------------|");
+            System.out.println("\t\t\tâ”œ--------------------------------------------------------------------|");
             System.out.println("\t\t\t| No |      Name          |        Email        |  Ticket  | Status  |");
 
             int no = 1;
@@ -1046,7 +1045,7 @@ public static String loadSpeakerBio(String username) {
                             }
                             if (user.hasUser(ticket.getBuyerName())) {
                                 System.out.println(
-                                        "\t\t\t├----|--------------------|---------------------|----------|---------|");
+                                        "\t\t\tâ”œ----|--------------------|---------------------|----------|---------|");
                                 System.out.printf("\t\t\t| %-2d | %-18s | %-19s | %-8s | %-8s|\n",
                                         no++,
                                         ticket.getBuyerName(),
@@ -1086,7 +1085,7 @@ public static String loadSpeakerBio(String username) {
         } else {
             System.out.println("\n\t\t\t----------------------------------------------------------------------");
             System.out.println("\t\t\t|                       ALL CHECK-INS REPORT                         |");
-            System.out.println("\t\t\t├--------------------------------------------------------------------|");
+            System.out.println("\t\t\tâ”œ--------------------------------------------------------------------|");
             System.out.println("\t\t\t| NO |      Name          |        Email        |  Ticket  | Status  |");
             int no = 1;
 
@@ -1114,7 +1113,7 @@ public static String loadSpeakerBio(String username) {
                         }
                         if (user.hasUser(ticket.getBuyerName())) {
                             System.out.println(
-                                    "\t\t\t├----|--------------------|---------------------|----------|---------|");
+                                    "\t\t\tâ”œ----|--------------------|---------------------|----------|---------|");
                             System.out.printf("\t\t\t| %-2d | %-18s | %-19s | %-8s | %-8s|\n",
                                     no++,
                                     ticket.getBuyerName(),
@@ -1197,7 +1196,7 @@ public static String loadSpeakerBio(String username) {
         System.out
                 .println("\n\t\t\t-----------------------------------------------------------------------------------");
         System.out.println("\t\t\t|                              Event List                                         |");
-        System.out.println("\t\t\t├---------------------------------------------------------------------------------|");
+        System.out.println("\t\t\tâ”œ---------------------------------------------------------------------------------|");
         System.out.println("\t\t\t| Event ID   |      Title         |        Venue      |    Date    |      Type    |");
 
         if (events.length == 0) {
@@ -1217,7 +1216,7 @@ public static String loadSpeakerBio(String username) {
                 if (event != null) {
 
                     System.out.print(
-                            "\t\t\t├------------|--------------------|-------------------|------------|--------------|\n"
+                            "\t\t\tâ”œ------------|--------------------|-------------------|------------|--------------|\n"
                                     +
                                     event.toString());
                 }
@@ -1296,11 +1295,11 @@ public static String loadSpeakerBio(String username) {
             System.out.println(
                     "\t\t\t|                                 Tickets Sales                                   |");
             System.out.println(
-                    "\t\t\t├---------------------------------------------------------------------------------|");
+                    "\t\t\tâ”œ---------------------------------------------------------------------------------|");
             System.out.println(
                     "\t\t\t| Ticket Type        | Total        | Sold         | Available    | Revenue       |");
             System.out.println(
-                    "\t\t\t├--------------------|--------------|--------------|--------------|---------------|");
+                    "\t\t\tâ”œ--------------------|--------------|--------------|--------------|---------------|");
 
             System.out.printf("\t\t\t| Early Bird         | %-12f | %-12f | %-12d | RM %-10.2f |\n",
                     totalEarly, soldEarly, availableEarly, revenueEarly);
@@ -1312,7 +1311,7 @@ public static String loadSpeakerBio(String username) {
                     totalVip, soldVip, availableVip, revenueVip);
 
             System.out.println(
-                    "\t\t\t├--------------------|--------------|--------------|--------------|---------------|");
+                    "\t\t\tâ”œ--------------------|--------------|--------------|--------------|---------------|");
 
             int totalAll = totalEarly + totalStandard + totalVip;
             int soldAll = soldEarly + soldStandard + soldVip;
@@ -1409,7 +1408,7 @@ public static String loadSpeakerBio(String username) {
         System.out
                 .println("\n\t\t\t-----------------------------------------------------------------------------------");
         System.out.println("\t\t\t|                              Event List                                         |");
-        System.out.println("\t\t\t├---------------------------------------------------------------------------------|");
+        System.out.println("\t\t\tâ”œ---------------------------------------------------------------------------------|");
         System.out.println("\t\t\t| Event ID   |      Title         |        Venue      |    Date    |      Type    |");
 
         if (events.length == 0) {
@@ -1424,7 +1423,7 @@ public static String loadSpeakerBio(String username) {
             for (Event event : events) {
                 if (event != null) {
                     System.out.print(
-                            "\t\t\t├------------|--------------------|-------------------|------------|--------------|\n"
+                            "\t\t\tâ”œ------------|--------------------|-------------------|------------|--------------|\n"
                                     +
                                     event.toString());
                 }
@@ -1513,11 +1512,11 @@ public static String loadSpeakerBio(String username) {
                 System.out.println(
                         "\t\t\t|                                 Tickets Sales                                   |");
                 System.out.println(
-                        "\t\t\t├---------------------------------------------------------------------------------|");
+                        "\t\t\tâ”œ---------------------------------------------------------------------------------|");
                 System.out.println(
                         "\t\t\t| Ticket Type        | Total        | Sold         | Available    | Revenue       |");
                 System.out.println(
-                        "\t\t\t├--------------------|--------------|--------------|--------------|---------------|");
+                        "\t\t\tâ”œ--------------------|--------------|--------------|--------------|---------------|");
 
                 System.out.printf("\t\t\t| Early Bird         | RM %-9.2f | RM %-9.2f | RM %-9.2f | RM %-10.2f |\n",
                         totalEarly, soldEarly, availableEarly, revenueEarly);
@@ -1529,7 +1528,7 @@ public static String loadSpeakerBio(String username) {
                         totalVip, soldVip, availableVip, revenueVip);
 
                 System.out.println(
-                        "\t\t\t├--------------------|--------------|--------------|--------------|---------------|");
+                        "\t\t\tâ”œ--------------------|--------------|--------------|--------------|---------------|");
 
                 double totalAll = totalEarly + totalStandard + totalVip;
                 double soldAll = soldEarly + soldStandard + soldVip;
@@ -1581,9 +1580,9 @@ public static String loadSpeakerBio(String username) {
             writer.write("\t\t|                                                                                |\n");
             writer.write("\t\t|  ---------------------------------------------------------------------------- |\n");
             writer.write("\t\t|  |                          CHECK-IN HISTORY                                | |\n");
-            writer.write("\t\t|  ├--------------------------------------------------------------------------| |\n");
+            writer.write("\t\t|  â”œ--------------------------------------------------------------------------| |\n");
             writer.write("\t\t|  | NO | Name               | Email               | Ticket ID    | Status    | |\n");
-            writer.write("\t\t|  ├----|--------------------|---------------------|--------------|-----------| |\n");
+            writer.write("\t\t|  â”œ----|--------------------|---------------------|--------------|-----------| |\n");
             Attendee usertemp = new Attendee();
             int no = 1;
             for (Ticket ticket : tickets) {
@@ -1630,9 +1629,9 @@ public static String loadSpeakerBio(String username) {
             writer.write("\t\t|                                                                                |\n");
             writer.write("\t\t|  ---------------------------------------------------------------------------- |\n");
             writer.write("\t\t|  |                           REVENUE BREAKDOWN                               | |\n");
-            writer.write("\t\t|  ├---------------------------------------------------------------------------| |\n");
+            writer.write("\t\t|  â”œ---------------------------------------------------------------------------| |\n");
             writer.write("\t\t|  | Ticket Type        | Sold         | Revenue                               | |\n");
-            writer.write("\t\t|  ├--------------------|------------------------------------------------------| |\n");
+            writer.write("\t\t|  â”œ--------------------|------------------------------------------------------| |\n");
 
             // Calculate totals
             int earlyBirdSold = 0, standardSold = 0, vipSold = 0;
@@ -1666,7 +1665,7 @@ public static String loadSpeakerBio(String username) {
             double totalRevenue = earlyBirdRevenue + standardRevenue + vipRevenue;
             int totalSold = earlyBirdSold + standardSold + vipSold;
 
-            writer.write("\t\t|  ├--------------------|------------------------------------------------------| |\n");
+            writer.write("\t\t|  â”œ--------------------|------------------------------------------------------| |\n");
             writer.write(
                     String.format("\t\t|  | TOTAL              | %-12d | RM %-40.2f |\n", totalSold, totalRevenue));
             writer.write("\t\t|  ---------------------------------------------------------------------------- |\n");
@@ -1674,10 +1673,10 @@ public static String loadSpeakerBio(String username) {
             writer.write("\t\t----------------------------------------------------------------------------------\n");
 
             writer.close();
-            System.out.println("\n\t\t✅ Sales Report exported successfully!");
+            System.out.println("\n\t\tâœ… Sales Report exported successfully!");
             System.out.println("\t\t   File: " + filename);
         } catch (IOException e) {
-            System.out.println("\t\t❌ Error exporting sales report: " + e.getMessage());
+            System.out.println("\t\tâŒ Error exporting sales report: " + e.getMessage());
         }
         waitForEnter();
     }
@@ -1705,7 +1704,7 @@ public static String loadSpeakerBio(String username) {
             writer.write("\t\t|                                                                                |\n");
             writer.write("\t\t|  ---------------------------------------------------------------------------- |\n");
             writer.write("\t\t|  |                           EVENT INFORMATION                              | |\n");
-            writer.write("\t\t|  ├--------------------------------------------------------------------------| |\n");
+            writer.write("\t\t|  â”œ--------------------------------------------------------------------------| |\n");
             writer.write(String.format("\t\t|  |  Event ID       : %-62s |\n", current_event.getEventID()));
             writer.write(String.format("\t\t|  |  Event Name     : %-62s |\n", current_event.getTitle()));
             writer.write(String.format("\t\t|  |  Date           : %-62s |\n", current_event.getDate()));
@@ -1718,9 +1717,9 @@ public static String loadSpeakerBio(String username) {
             if (ticketTypes != null) {
                 writer.write("\t\t|  ---------------------------------------------------------------------------- |\n");
                 writer.write("\t\t|  |                           TICKET SALES                                   | |\n");
-                writer.write("\t\t|  ├--------------------------------------------------------------------------| |\n");
+                writer.write("\t\t|  â”œ--------------------------------------------------------------------------| |\n");
                 writer.write("\t\t|  | Ticket Type        | Total        | Sold         | Revenue               | |\n");
-                writer.write("\t\t|  ├--------------------|--------------|--------------|-----------------------| |\n");
+                writer.write("\t\t|  â”œ--------------------|--------------|--------------|-----------------------| |\n");
 
                 int[] tol = current_TicketType.getQuantityOfAllTicketType();
                 // Early Bird
@@ -1745,7 +1744,7 @@ public static String loadSpeakerBio(String username) {
                 writer.write(String.format("\t\t|  | VIP                | %-12d | %-12d | RM %-22.2f |\n", totalVip,
                         soldVip, revenueVip));
 
-                writer.write("\t\t|  ├--------------------|--------------|--------------|-----------------------| |\n");
+                writer.write("\t\t|  â”œ--------------------|--------------|--------------|-----------------------| |\n");
                 writer.write(String.format("\t\t|  | TOTAL              | %-12d | %-12d | RM %-22.2f |\n",
                         (totalEarly + totalStandard + totalVip),
                         (soldEarly + soldStandard + soldVip),
@@ -1834,7 +1833,7 @@ public static String loadSpeakerBio(String username) {
             System.out.println("\t\t   Sales Report: " + salesFilename);
             System.out.println("\t\t   Event Report: " + eventFilename);
         } catch (IOException e) {
-            System.out.println("\t\t❌ Error exporting reports: " + e.getMessage());
+            System.out.println("\t\tâŒ Error exporting reports: " + e.getMessage());
         }
         waitForEnter();
     }
@@ -2056,7 +2055,7 @@ public static String loadSpeakerBio(String username) {
             }
 
         } else {
-            // Conference — ask how many sessions to create right away
+            // Conference â€” ask how many sessions to create right away
             System.out.print("How many sessions to create now? (0 to skip): ");
             int numSessions = readInt();
 
@@ -2165,7 +2164,7 @@ public static String loadSpeakerBio(String username) {
         System.out.println();
         System.out.println("  --------------------------------------------");
         System.out.printf("  |  Current Event Details                   |%n");
-        System.out.println("  ├------------------------------------------|");
+        System.out.println("  â”œ------------------------------------------|");
         System.out.printf("  |  ID       : %-28s |%n", e.getEventID());
         System.out.printf("  |  Type     : %-28s |%n", e.getClass().getSimpleName());
         System.out.printf("  |  Title    : %-28s |%n",
@@ -2954,7 +2953,7 @@ public static void loadAllSpeakerBios() {
                     speakerCol = w.getSpeakers()[0];
                 }
             }
-            // Conference: speakers belong to individual sessions — leave column empty
+            // Conference: speakers belong to individual sessions â€” leave column empty
             // Truncate name if too long to avoid breaking column alignment
             if (speakerCol.length() > 12) {
                 speakerCol = speakerCol.substring(0, 9) + "...";
@@ -3006,7 +3005,7 @@ public static void loadAllSpeakerBios() {
         System.out.printf("  | %-2s | %-4s | %-12s | %-20s | %-10s | %-20s | %-6s |%n",
                 "No", "ID", "Type", "Title", "Date", "Venue", "MaxTix");
         System.out.println(
-                "  ├----|------|--------------|----------------------|------------|----------------------|--------|");
+                "  â”œ----|------|--------------|----------------------|------------|----------------------|--------|");
         for (int i = 0; i < eventCount; i++) {
             Event e = events[i];
             String type = e.getClass().getSimpleName();
@@ -3129,7 +3128,7 @@ private static void writeConferenceRecord(Writer writer, String eventID, String 
                 writer.write(usernames[sp] + "\n");
             }
             
-            // ✅ NEW: Save speaker status and rejection reason for each speaker
+            // âœ… NEW: Save speaker status and rejection reason for each speaker
             for (int sp = 0; sp < session.getSpeakerCount(); sp++) {
                 writer.write(session.getSpeakerStatus(usernames[sp]) + "\n");
                 writer.write(session.getRejectionReason(usernames[sp]) + "\n");
@@ -3156,7 +3155,7 @@ private static void writeConferenceRecord(Writer writer, String eventID, String 
 
     /**
      * Reads all conferences from "Conference.json".
-     * Session speaker slots are restored as plain usernames (String) — No Speaker
+     * Session speaker slots are restored as plain usernames (String) â€” No Speaker
      * object is constructed.
      */
 public static List<Conference> readConferenceData() {
@@ -3656,7 +3655,7 @@ public static List<Workshop> readWorkshopData() {
         System.out.printf("  | %-2s | %-4s | %-12s | %-15s | %-10s | %-15s | %-19s | %-18s | %16s |%n",
                 "No", "ID", "Type", "Title", "Date", "Venue", "Sales Start Date", "Sales End Date", "Available Ticket");
         System.out.println(
-                "  ├----|------|--------------|-----------------|------------|-----------------|---------------------|--------------------|------------------|");
+                "  â”œ----|------|--------------|-----------------|------------|-----------------|---------------------|--------------------|------------------|");
         for (int i = 0; i < eventCount; i++) {
             Event e = events[i];
             String type = e.getClass().getSimpleName();
@@ -3888,7 +3887,7 @@ public static List<Workshop> readWorkshopData() {
                     String perks = lines.get(i + 12);
                     LocalDate salesStart = LocalDate.parse(lines.get(i + 13));
                     LocalDate salesEnd = LocalDate.parse(lines.get(i + 14));
-                    // earlyBirdEnd is not stored — constructor computes it as
+                    // earlyBirdEnd is not stored â€” constructor computes it as
                     // salesStart.plusDays(1)
 
                     TicketType tt = new TicketType(eventId, totalQuantity, quantityEarlyBird, quantityStandard,
@@ -4057,7 +4056,7 @@ static void manageAssignedSessions(Speaker speaker) {
 
     boolean continueManaging = true;
     while (continueManaging) {
-        System.out.println("\n-----------------------------------------------------------------------------------╗");
+        System.out.println("\n-----------------------------------------------------------------------------------â•—");
         System.out.println("|                         YOUR PENDING INVITATIONS                                 |");
         System.out.println("|----------------------------------------------------------------------------------|");
         System.out.println("| No |    Type      |         Event Name       |            Details                |");
@@ -4087,7 +4086,7 @@ static void manageAssignedSessions(Speaker speaker) {
                     (i + 1), type, eventName, details);
         }
         
-        System.out.println("-----╩--------------╩--------------------------╩------------------------------------");
+        System.out.println("-----â•©--------------â•©--------------------------â•©------------------------------------");
         System.out.println("\n0. Back to Main Menu");
         System.out.print("Select invitation number to respond (or 0 to exit): ");
         
@@ -4106,7 +4105,7 @@ static void manageAssignedSessions(Speaker speaker) {
         } else if (choice >= 1 && choice <= pendingInvitations.size()) {
             Object selected = pendingInvitations.get(choice - 1);
             
-            System.out.println("\n---------------------------------------------------------------------------------╗");
+            System.out.println("\n---------------------------------------------------------------------------------â•—");
             System.out.println("|                           INVITATION DETAILS                                    |");
             System.out.println("----------------------------------------------------------------------------------");
             
@@ -4175,7 +4174,7 @@ static void manageAssignedSessions(Speaker speaker) {
                     ((Workshop) selected).rejectInvitation(speaker.getUsername(), reason);
                     storeWorkshopData(workshops);
                 }
-                System.out.println("\n✗ You have rejected this invitation.");
+                System.out.println("\nâœ— You have rejected this invitation.");
                 System.out.println("Reason: " + reason);
             } else {
                 System.out.println("Invalid choice. Please enter 1 or 2.");
