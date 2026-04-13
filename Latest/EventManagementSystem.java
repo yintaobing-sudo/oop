@@ -127,19 +127,6 @@ public class EventManagementSystem {
 
     // -------------------------- validation for event ---------------------------
 
-    // validate title (must not be empty and at least 3 characters)
-    public boolean validationTitle(String title) {
-        if (title == null || title.trim().isEmpty()) {
-            System.out.println("Error: Title cannot be empty !");
-            return false;
-        } else if (title.trim().length() < 3) {
-            System.out.println("Error: Title must be at least 3 characters !");
-            return false;
-        } else {
-            return true;
-        }
-    }
-
     // validate date string (must be YYYY-MM-DD format and a future date)
     // returns the parsed LocalDate if valid, or null if invalid
     public LocalDate validationDate(String date) {
@@ -160,26 +147,6 @@ public class EventManagementSystem {
         }
     }
 
-    // validate venue (must not be empty)
-    public boolean validationVenue(String venue) {
-        if (venue == null || venue.trim().isEmpty()) {
-            System.out.println("Error: Venue cannot be empty !");
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    // validate max tickets (must be greater than 0)
-    public boolean validationMaxTickets(int maxTickets) {
-        if (maxTickets <= 0) {
-            System.out.println("Error: Max tickets must be greater than 0 !");
-            return false;
-        } else {
-            return true;
-        }
-    }
-
     public boolean validationInputEventId(String eventId) {
         for (Event e : this.events) {
             if (e != null && e.hasEvent(eventId)) {
@@ -195,20 +162,7 @@ public class EventManagementSystem {
 
     // Creates a Concert and stores it in events[CONCERT][]
     public Concert createConcert(String title, String date, String venue, int maxTickets) {
-        if (!validationTitle(title))
-            return null;
         LocalDate parsedDate = validationDate(date);
-        if (parsedDate == null)
-            return null;
-        if (!validationVenue(venue))
-            return null;
-        if (!validationMaxTickets(maxTickets))
-            return null;
-        if (eventCount >= MAX_EVENTS) {
-            System.out.println("Error: Concert list is full !");
-            return null;
-        }
-
         Concert c = new Concert(title, parsedDate, venue, maxTickets);
         events[eventCount] = c;
         eventCount++;
@@ -218,20 +172,7 @@ public class EventManagementSystem {
 
     // Creates a Workshop and stores it in events[WORKSHOP][]
     public Workshop createWorkshop(String title, String date, String venue, int maxTickets) {
-        if (!validationTitle(title))
-            return null;
         LocalDate parsedDate = validationDate(date);
-        if (parsedDate == null)
-            return null;
-        if (!validationVenue(venue))
-            return null;
-        if (!validationMaxTickets(maxTickets))
-            return null;
-        if (eventCount >= MAX_EVENTS) {
-            System.out.println("Error: Workshop list is full !");
-            return null;
-        }
-
         Workshop w = new Workshop(title, parsedDate, venue, maxTickets);
         events[eventCount] = w;
         eventCount++;
@@ -243,19 +184,9 @@ public class EventManagementSystem {
     // events[CONFERENCE][]
     public Conference createConference(String title, String date, String venue, int maxTickets,
             String[] sessionTopics, String[] sessionTimes) {
-        if (!validationTitle(title))
-            return null;
         LocalDate parsedDate = validationDate(date);
         if (parsedDate == null)
             return null;
-        if (!validationVenue(venue))
-            return null;
-        if (!validationMaxTickets(maxTickets))
-            return null;
-        if (eventCount >= MAX_EVENTS) {
-            System.out.println("Error: Conference list is full !");
-            return null;
-        }
 
         Conference conf = new Conference(title, parsedDate, venue, maxTickets);
         if (sessionTopics != null && sessionTimes != null) {
@@ -328,7 +259,6 @@ public class EventManagementSystem {
                 + session.getSessionID() + "]. Cannot update topic.");
         return false;
     }
-
  
     public Event findEventById(String eventId) {
         for (Event e : this.events) {
