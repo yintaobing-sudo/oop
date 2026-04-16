@@ -822,12 +822,11 @@ public class TestUser {
                 for (Ticket ticket : tickets) {
 
                     usertemp.setUserName(ticket.getBuyerName());
-
                     if (ticket.hasTicket(ticketId)) {
                         ticketFound = true;
 
                         // Find attendee by buyer name
-                        for (int i = 0; i < no[0]; i++) {
+                        for (int i = 0; i < ems.getUser_No(); i++) {
                             if (alluser[i].equals(usertemp)) {
                                 current_attendee = alluser[i];
                                 currentTicket = ticket;
@@ -862,11 +861,12 @@ public class TestUser {
 
                 for (Ticket ticket : tickets) {
                     if (ticket.getBookingId().equals(bookingId)) {
+
                         bookingFound = true;
                         currentTicket = ticket;
                         usertemp.setUserName(ticket.getBuyerName());
                         // Find attendee by buyer name
-                        for (int i = 0; i < no[2]; i++) {
+                        for (int i = 0; i <ems.getUser_No(); i++) {
                             if (alluser[i].equals(usertemp)) {
                                 current_attendee = alluser[i];
                                 search = false;
@@ -894,6 +894,9 @@ public class TestUser {
                     return;
                 }
                 break;
+            default :
+                checkIn_Attendee(alluser, no);
+                return;
         }
 
         // Check if already checked in
